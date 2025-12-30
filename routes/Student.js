@@ -2827,7 +2827,8 @@ router.get("/Search_Student", async function (req, res, next) {
 			req.query.RowCount,
 			req.query.RowCount2,
 			req.query.Register_Value,
-			req.query.Date_Type_Value_
+			req.query.Date_Type_Value_,
+			req.query.Is_Today_Search_
 		);
 
 		res.json(result);
@@ -7583,28 +7584,28 @@ router.get('/Get_Intake_Data_With_Count_Greater_Than_Zero/', function (req, res,
 });
 
 router.get(
-  '/Daily_Report/:fromDate/:toDate/:userId/:loginUserId',
-  function (req, res, next) {
-    try {
-      Student.Get_Daily_Report(
-        {
-          fromDate: req.params.fromDate,
-          toDate: req.params.toDate,
-          userId: req.params.userId,
-          loginUserId: req.params.loginUserId
-        },
-        function (err, rows) {
-          if (err) {
-            res.json(err);
-          } else {
-            res.json(rows);
-          }
-        }
-      );
-    } catch (e) {
-      res.json(e);
-    }
-  }
+	'/Daily_Report/:fromDate/:toDate/:userId/:loginUserId',
+	function (req, res, next) {
+		try {
+			Student.Get_Daily_Report(
+				{
+					fromDate: req.params.fromDate,
+					toDate: req.params.toDate,
+					userId: req.params.userId,
+					loginUserId: req.params.loginUserId
+				},
+				function (err, rows) {
+					if (err) {
+						res.json(err);
+					} else {
+						res.json(rows);
+					}
+				}
+			);
+		} catch (e) {
+			res.json(e);
+		}
+	}
 );
 
 

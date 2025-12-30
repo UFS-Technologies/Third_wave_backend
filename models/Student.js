@@ -426,22 +426,22 @@ var Student = {
 			"@Reminder_Enabled_ :=?," +
 			"@Reminder_Time_ :=?" +
 			")"
-			, [Profile_.Student_Id, Profile_.Enquiry_Source_Id, Profile_.Enquiry_Source_Name, Profile_.Enquiryfor_Id,Profile_.Enquirfor_Name, 
+			, [Profile_.Student_Id, Profile_.Enquiry_Source_Id, Profile_.Enquiry_Source_Name, Profile_.Enquiryfor_Id, Profile_.Enquirfor_Name,
 			Profile_.Shore_Id, Profile_.Shore_Name, Profile_.Enquiry_Mode_Id, Profile_.Enquiry_Mode_Name, Profile_.Program_Course_Id,
 			Profile_.Program_Course_Name, Profile_.Country_Id, Profile_.Country_Name, Profile_.Marital_Status_Id, Profile_.Marital_Status_Name,
-			Profile_.Passport_Id,Profile_.Address1, Profile_.Address2, Profile_.Alternative_Email, Profile_.Alternative_Phone_Number, 
-			Profile_.Date_of_Marriage, Profile_.Dob, Profile_.Dropbox_Link,Profile_.Email, Profile_.No_of_Kids_and_Age, Profile_.Passport_No, 
-			Profile_.Passport_Todate, Profile_.Passport_fromdate, Profile_.Phone_Number, Profile_.Previous_Visa_Rejection,Profile_.Reference, 
+			Profile_.Passport_Id, Profile_.Address1, Profile_.Address2, Profile_.Alternative_Email, Profile_.Alternative_Phone_Number,
+			Profile_.Date_of_Marriage, Profile_.Dob, Profile_.Dropbox_Link, Profile_.Email, Profile_.No_of_Kids_and_Age, Profile_.Passport_No,
+			Profile_.Passport_Todate, Profile_.Passport_fromdate, Profile_.Phone_Number, Profile_.Previous_Visa_Rejection, Profile_.Reference,
 			Profile_.Spouse_Name, Profile_.Spouse_Occupation, Profile_.Spouse_Qualification, Profile_.Student_Name, Profile_.Whatsapp,
-			FollowUp_.Branch, FollowUp_.Branch_Name, FollowUp_.By_User_Id, FollowUp_.By_User_Name, FollowUp_.Department, 
+			FollowUp_.Branch, FollowUp_.Branch_Name, FollowUp_.By_User_Id, FollowUp_.By_User_Name, FollowUp_.Department,
 			FollowUp_.Department_FollowUp, FollowUp_.Department_Name, FollowUp_.Department_Status_Name, FollowUp_.Next_FollowUp_Date,
-			FollowUp_.Remark, FollowUp_.Remark_id, FollowUp_.Status_Id, FollowUp_.To_User_Name, FollowUp_.To_User_Id, 
-			Profile_.Student_Status_Id, Profile_.Agent_Id, Profile_.Flag_Student, Profile_.Flag_Followup,Profile_.Phone_Change, 
+			FollowUp_.Remark, FollowUp_.Remark_id, FollowUp_.Status_Id, FollowUp_.To_User_Name, FollowUp_.To_User_Id,
+			Profile_.Student_Status_Id, Profile_.Agent_Id, Profile_.Flag_Student, Profile_.Flag_Followup, Profile_.Phone_Change,
 			Profile_.Email_Change, Profile_.Alternative_Email_Change, Profile_.Alternative_Phone_Number_Change, Profile_.Whatsapp_Change,
 			Profile_.Department_Id, Profile_.Branch_Id, Unique_Id_, FollowUp_.Class_Id, FollowUp_.Class_Name, Profile_.Guardian_telephone,
-			Profile_.Counsilor_Note, Profile_.BPH_Note, Profile_.Pre_Visa_Note, FollowUp_.Sub_Status_Id,FollowUp_.Sub_Status_Name, 
-			FollowUp_.Status_Type_Id, FollowUp_.Status_Type_Name,FollowUp_.Class_Order, Profile_.Refund_Amount, Profile_.Refund_Description,
-			 Profile_.Visa_Date, Profile_.Intake_Id, Profile_.Intake_Name, Profile_.Invoice_Amount, Profile_.Age,
+			Profile_.Counsilor_Note, Profile_.BPH_Note, Profile_.Pre_Visa_Note, FollowUp_.Sub_Status_Id, FollowUp_.Sub_Status_Name,
+			FollowUp_.Status_Type_Id, FollowUp_.Status_Type_Name, FollowUp_.Class_Order, Profile_.Refund_Amount, Profile_.Refund_Description,
+			Profile_.Visa_Date, Profile_.Intake_Id, Profile_.Intake_Name, Profile_.Invoice_Amount, Profile_.Age,
 			Profile_.Tenth_Qualification,
 			Profile_.Twelfth_Qualification,
 			Profile_.UG_Qualification,
@@ -977,7 +977,8 @@ var Student = {
 		Login_User_Id_,
 		RowCount,
 		RowCount2,
-		Register_Value, Date_Type_Value_
+		Register_Value, Date_Type_Value_,
+		Is_Today_Search_
 	) {
 		var Leads = [];
 		try {
@@ -1005,7 +1006,8 @@ var Student = {
 				Login_User_Id_,
 				RowCount,
 				RowCount2,
-				Register_Value, Date_Type_Value_
+				Register_Value, Date_Type_Value_,
+				Is_Today_Search_
 			]).result();
 			console.log('Leads: ', Leads);
 		} catch (e) {
@@ -3913,7 +3915,7 @@ var Student = {
 			callback
 		);
 	},
-	
+
 	Get_Agent_Student_Reciept_Details: function (Agent_Id_, callback) {
 		return db.query(
 			"CALL Get_Agent_Student_Reciept_Details(@Agent_Id_ :=?)",
@@ -4078,24 +4080,24 @@ var Student = {
 				UserRoleString,
 				Department_String,
 				Login_User_Id_,
-				FromDate_, 
+				FromDate_,
 				ToDate_,
-				Date_Value_, 
+				Date_Value_,
 				User_Id_
 			]).result();
 
 			user_count_data = await new storedProcedure(
 				"Get_Dashboard_Count_user",
-				[UserRoleString, 
+				[UserRoleString,
 					Department_String,
-					Login_User_Id_, 
-					FromDate_, 
+					Login_User_Id_,
+					FromDate_,
 					ToDate_,
-					Date_Value_, 
+					Date_Value_,
 					User_Id_,]
 			).result();
 
-		} catch (e) { 
+		} catch (e) {
 			console.log(e);
 		}
 		console.log(Leads);
@@ -12899,17 +12901,17 @@ var Student = {
 	},
 
 	Get_Daily_Report: function (data, callback) {
-        return db.query(
-            "CALL Daily_Report(?,?,?,?)",
-            [
-                data.fromDate,
-                data.toDate,
-                data.userId,
-                data.loginUserId
-            ],
-            callback
-        );
-    }
+		return db.query(
+			"CALL Daily_Report(?,?,?,?)",
+			[
+				data.fromDate,
+				data.toDate,
+				data.userId,
+				data.loginUserId
+			],
+			callback
+		);
+	}
 
 
 };
