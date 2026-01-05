@@ -404,7 +404,7 @@ var Student = {
 		// console.log(FollowUp_)
 		return db.query("CALL Save_Profile(" + "@Student_Id_ :=?," + "@Enquiry_Source_Id_ :=?," + "@Enquiry_Source_Name_ :=?," + "@Enquiryfor_Id_ :=?," +
 			"@Enquirfor_Name_ :=?," + "@Shore_Id_ :=?," + "@Shore_Name_ :=?," + "@Enquiry_Mode_Id_ :=?," + "@Enquiry_Mode_Name_ :=?," + "@Program_Course_Id_ :=?," +
-			"@Program_Course_Name_ :=?," + "@Country_Id_ :=?," + "@Country_Name_ :=?," + "@Marital_Status_Id_ :=?," + "@Marital_Status_Name_ :=?," + "@Passport_Id_ :=?," +
+			"@Program_Course_Name_ :=?," + "@Profile_Country_Id_ :=?," + "@Country_Name_ :=?," + "@Marital_Status_Id_ :=?," + "@Marital_Status_Name_ :=?," + "@Passport_Id_ :=?," +
 			"@Address1_ :=?," + "@Address2_ :=?," + "@Alternative_Email_ :=?," + "@Alternative_Phone_Number_ :=?," + "@Date_of_Marriage_ :=?," + "@Dob_ :=?," + "@Dropbox_Link_ :=?," +
 			"@Email_ :=?," + "@No_of_Kids_and_Age_ :=?," + "@Passport_No_ :=?," + "@Passport_Todate_ :=?," + "@Passport_fromdate_ :=?," + "@Phone_Number_ :=?," + "@Previous_Visa_Rejection_ :=?," +
 			"@Reference_ :=?," + "@Spouse_Name_ :=?," + "@Spouse_Occupation_ :=?," + "@Spouse_Qualification_ :=?," + "@Student_Name_ :=?," + "@Whatsapp_ :=?," +
@@ -426,9 +426,9 @@ var Student = {
 			"@Reminder_Enabled_ :=?," +
 			"@Reminder_Time_ :=?" +
 			")"
-			, [Profile_.Student_Id, Profile_.Enquiry_Source_Id, Profile_.Enquiry_Source_Name, Profile_.Enquiryfor_Id, Profile_.Enquirfor_Name,
+			, [Profile_.Student_Id, Profile_.Enquiry_Source_Id, Profile_.Enquiry_Source_Name, Profile_.Enquiryfor_Id,Profile_.Enquirfor_Name,
 			Profile_.Shore_Id, Profile_.Shore_Name, Profile_.Enquiry_Mode_Id, Profile_.Enquiry_Mode_Name, Profile_.Program_Course_Id,
-			Profile_.Program_Course_Name, Profile_.Country_Id, Profile_.Country_Name, Profile_.Marital_Status_Id, Profile_.Marital_Status_Name,
+			Profile_.Program_Course_Name, Profile_.Profile_Country_Id, Profile_.Country_Name, Profile_.Marital_Status_Id, Profile_.Marital_Status_Name,
 			Profile_.Passport_Id, Profile_.Address1, Profile_.Address2, Profile_.Alternative_Email, Profile_.Alternative_Phone_Number,
 			Profile_.Date_of_Marriage, Profile_.Dob, Profile_.Dropbox_Link, Profile_.Email, Profile_.No_of_Kids_and_Age, Profile_.Passport_No,
 			Profile_.Passport_Todate, Profile_.Passport_fromdate, Profile_.Phone_Number, Profile_.Previous_Visa_Rejection, Profile_.Reference,
@@ -977,8 +977,11 @@ var Student = {
 		Login_User_Id_,
 		RowCount,
 		RowCount2,
-		Register_Value, Date_Type_Value_,
-		Is_Today_Search_
+		Register_Value, 
+		Date_Type_Value_,
+		Is_Today_Search_,
+		Enquiry_Source_Search_,
+		Country_Search_
 	) {
 		var Leads = [];
 		try {
@@ -1006,8 +1009,11 @@ var Student = {
 				Login_User_Id_,
 				RowCount,
 				RowCount2,
-				Register_Value, Date_Type_Value_,
-				Is_Today_Search_
+				Register_Value, 
+				Date_Type_Value_,
+				Is_Today_Search_,
+				Enquiry_Source_Search_,
+				Country_Search_
 			]).result();
 			console.log('Leads: ', Leads);
 		} catch (e) {

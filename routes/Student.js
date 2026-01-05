@@ -329,7 +329,7 @@ router.get('/Get_Todays_Notifications/:User_Id_?', function (req, res, next) {
 router.post('/Save_Profile/', function (req, res, next) {
 
 	const io = req.app.get('io');
-
+	console.log(req.body);
 	try {
 		Student.Save_Profile(req.body, async function (err, rows) {
 			if (err) {
@@ -2828,7 +2828,9 @@ router.get("/Search_Student", async function (req, res, next) {
 			req.query.RowCount2,
 			req.query.Register_Value,
 			req.query.Date_Type_Value_,
-			req.query.Is_Today_Search_
+			req.query.Is_Today_Search_,
+			req.query.Enquiry_Source_Search_,
+			req.query.Country_Search_
 		);
 
 		res.json(result);
