@@ -1390,7 +1390,8 @@ var Student = {
 		Task_,
 		Pointer_Start_,
 		Pointer_Stop_,
-		Page_Length_, Assign_User_
+		Page_Length_,
+		 Assign_User_
 
 	) {
 
@@ -3531,7 +3532,8 @@ var Student = {
 		Branch_,
 		By_User_,
 		Login_User_Id_,
-		SearchbyName_
+		SearchbyName_,
+		status_id
 	) {
 		var Leads = [];
 		try {
@@ -3539,7 +3541,9 @@ var Student = {
 				Department_,
 				Branch_,
 				By_User_,
-				Login_User_Id_, SearchbyName_,
+				Login_User_Id_,
+				 SearchbyName_,
+				 status_id
 			]).result();
 		} catch (e) { }
 

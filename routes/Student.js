@@ -3300,7 +3300,7 @@ router.post("/Send_Welcome_Mail/", async function (req, res, next) {
 });
 
 router.get(
-	"/Pending_FollowUp/:Department_?/:Branch_?/:By_User_?/:Login_User_Id_?/:SearchbyName_?",
+	"/Pending_FollowUp/:Department_?/:Branch_?/:By_User_?/:Login_User_Id_?/:SearchbyName_?/:status_id?",
 	async function (req, res, next) {
 		var result = "";
 		try {
@@ -3309,7 +3309,8 @@ router.get(
 				req.params.Branch_,
 				req.params.By_User_,
 				req.params.Login_User_Id_,
-				req.params.SearchbyName_
+				req.params.SearchbyName_,
+				req.params.status_id
 			);
 			res.json(result);
 		} catch (e) {
