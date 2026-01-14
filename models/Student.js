@@ -12921,7 +12921,25 @@ var Student = {
 			],
 			callback
 		);
-	}
+	},
+	Duplicate_Report: async function (
+    Fromdate_,
+    Todate_,
+    To_Staff_,
+    Login_User_Id_
+  ) {
+    try {
+      return await new storedProcedure("Duplicate_Report", [
+        Fromdate_,
+        Todate_,
+        To_Staff_,
+        Login_User_Id_
+      ]).result();
+    } catch (error) {
+      throw error;
+    }
+  }
+
 
 
 };

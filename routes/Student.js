@@ -7610,6 +7610,25 @@ router.get(
 		}
 	}
 );
+router.get(
+  "/Duplicate_Report/:Fromdate_?/:Todate_?/:To_Staff_?/:loginUserId?",
+  async function (req, res, next) {
+    try {
+      const result = await Student.Duplicate_Report(
+        req.params.Fromdate_ || null,
+        req.params.Todate_ || null,
+        req.params.To_Staff_ || 0,
+        req.params.loginUserId      // from token middleware
+      );
+
+    //   res.json(result[0]);
+	res.json(Array.isArray(result[0]) ? result[0] : result);
+
+    } catch (err) {
+      res.json(err);
+    }
+  }
+);
 
 
 
