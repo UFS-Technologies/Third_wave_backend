@@ -3,7 +3,7 @@ const router = express.Router();
 const CallDetails = require("../models/call_Details");
 const axios = require("axios");
 // Base URL for FastAPI
-const FASTAPI_BASE_URL = "https://fastapiserver-0owu.onrender.com/api/v1";
+const FASTAPI_BASE_URL = "http://15.207.163.233:8000/api/v1";
 
 // Endpoints
 const FASTAPI_LOGIN_URL = `${FASTAPI_BASE_URL}/auth/login`;
@@ -60,7 +60,7 @@ router.get("/Search_Call_Aether_History", async (req, res) => {
     // const token = req.headers.authorization?.replace("Bearer ", "") ;
     // const token = await getToken();
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjE1NjM3MS1jODFlLTRlNWQtOTA1ZC04YjcxZjY3OTA0MDkiLCJwaG9uZV9udW1iZXIiOiI5NDk2MTI3NjI5IiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTc2ODgxMzg5OSwiaWF0IjoxNzY4MjA5MDk5LCJ0eXBlIjoiYWNjZXNzIn0.X3hALGUc91Dk6kQDVDuILAxKYnL31VLV8vNPUbt1W4s";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZDQ3NWU4OC02ZDdlLTRmMmUtYWUxNy00ZjM5MDZiZTIyMzciLCJwaG9uZV9udW1iZXIiOiI5NTY3MzE2OTQwIiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTgwMTU2MDU3OSwiaWF0IjoxNzcwMDI0NTc5LCJ0eXBlIjoiYWNjZXNzIn0.Xp_f3E7fOwQpG9wItw8sUd8grwVa4mRCJ2H5pg4fDWE";
 
     if (!token) {
         const response = await performLogin();
@@ -196,91 +196,94 @@ router.get("/Search_Call_Aether_History", async (req, res) => {
 router.post("/Search_Call_Aether_Dashboard", async (req, res) => {
   try {
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjE1NjM3MS1jODFlLTRlNWQtOTA1ZC04YjcxZjY3OTA0MDkiLCJwaG9uZV9udW1iZXIiOiI5NDk2MTI3NjI5IiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTc2ODgxMzg5OSwiaWF0IjoxNzY4MjA5MDk5LCJ0eXBlIjoiYWNjZXNzIn0.X3hALGUc91Dk6kQDVDuILAxKYnL31VLV8vNPUbt1W4s";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZDQ3NWU4OC02ZDdlLTRmMmUtYWUxNy00ZjM5MDZiZTIyMzciLCJwaG9uZV9udW1iZXIiOiI5NTY3MzE2OTQwIiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTgwMTU2MDU3OSwiaWF0IjoxNzcwMDI0NTc5LCJ0eXBlIjoiYWNjZXNzIn0.Xp_f3E7fOwQpG9wItw8sUd8grwVa4mRCJ2H5pg4fDWE";
 
     if (!token) {
         const response = await performLogin();
      token = response.data.access_token;
      //console.log("Performed login, new token:", token);
     }
-    // const fromDate = req.query.startDate
-    //   ? `${req.query.startDate}T00:00:00+05:30`
-    //   : null;
-    // const toDate = req.query.endDate
-    //   ? `${req.query.endDate}T23:59:59.999999+05:30`
-    //   : null;
 
-    // let callTypes;
-// const queryParams =
-// {
-//   "time_filter": "today",
-//   "start_date": "2025-12-13T01:00:52.920Z",
-//   "end_date": "2025-12-13T01:00:52.920Z",
-//   "user_ids": [
-//     "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-//   ],
-//   "user_group_ids": [
-//     "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-//   ],
-//   "employee_ids": [
-//     "string"
-//   ],
-//   "branch_ids": [
-//     "string"
-//   ]
-// }
+/*
+    const fromDate = req.query.startDate
+      ? `${req.query.startDate}T00:00:00+05:30`
+      : null;
+    const toDate = req.query.endDate
+      ? `${req.query.endDate}T23:59:59.999999+05:30`
+      : null;
+
+    let callTypes;
+const queryParams =
+{
+  "time_filter": "today",
+  "start_date": "2025-12-13T01:00:52.920Z",
+  "end_date": "2025-12-13T01:00:52.920Z",
+  "user_ids": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  ],
+  "user_group_ids": [
+    "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  ],
+  "employee_ids": [
+    "string"
+  ],
+  "branch_ids": [
+    "string"
+  ]
+}
 
 
-    // const queryParams = {
-    //   offset: req.query.offset || 0,
-    //   limit: req.query.limit || 1000,
-    //   filter_min_start_datetime: fromDate,
-    //   filter_max_start_datetime: toDate,
-    //   filter_user_ids:
-    //     req.query.user_ids && req.query.user_ids !== "null"
-    //       ? req.query.user_ids
-    //       : null,
-    //   filter_user_group_ids:
-    //     req.query.user_group_ids && req.query.user_group_ids !== "null"
-    //       ? req.query.user_group_ids
-    //       : null,
-    //   filter_employee_ids:
-    //     req.query.employee_ids && req.query.employee_ids !== "undefined"
-    //       ? req.query.employee_ids
-    //       : null,
-    //        filter_branch_ids:
-    //     req.query.branch_ids && req.query.branch_ids !== "undefined"
-    //       ? req.query.branch_ids
-    //       : null,          
-    // };
-    // Remove null values
-    // Object.keys(queryParams).forEach(
-    //   (k) => queryParams[k] === null && delete queryParams[k]
-    // );
-    //console.log('2', JSON.stringify(queryParams));
-    // ✅ Call FastAPI with proper serializer
-    // console.log('2', queryParams);
+    const queryParams = {
+      offset: req.query.offset || 0,
+      limit: req.query.limit || 1000,
+      filter_min_start_datetime: fromDate,
+      filter_max_start_datetime: toDate,
+      filter_user_ids:
+        req.query.user_ids && req.query.user_ids !== "null"
+          ? req.query.user_ids
+          : null,
+      filter_user_group_ids:
+        req.query.user_group_ids && req.query.user_group_ids !== "null"
+          ? req.query.user_group_ids
+          : null,
+      filter_employee_ids:
+        req.query.employee_ids && req.query.employee_ids !== "undefined"
+          ? req.query.employee_ids
+          : null,
+           filter_branch_ids:
+        req.query.branch_ids && req.query.branch_ids !== "undefined"
+          ? req.query.branch_ids
+          : null,          
+    };
+    Remove null values
+    Object.keys(queryParams).forEach(
+      (k) => queryParams[k] === null && delete queryParams[k]
+    );
+    console.log('2', JSON.stringify(queryParams));
+    ✅ Call FastAPI with proper serializer
+    console.log('2', queryParams);
 
-// try {
-    // const response1 = await axios.post(
-    //   FASTAPI_USER_DASHBOARD,
-    //   {
-    //     headers: { Authorization: `Bearer ${token}` },
-    //     params: (queryParams)
-    //   }
-    // );
+try {
+    const response1 = await axios.post(
+      FASTAPI_USER_DASHBOARD,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: (queryParams)
+      }
+    );
 
-// const response = await axios.post(
-//   FASTAPI_USER_DASHBOARD,
-//   null,   // body must be null
-//   {
-//     params: queryParams,   // ✅ correct place
-//     headers: {
-//       Authorization: `Bearer ${token}`
-//     }
-//   }
-// );   "string"  "string"
-// console.log("time_filter",req.params)"3fa85f64-5717-4562-b3fc-2c963f66afa6","3fa85f64-5717-4562-b3fc-2c963f66afa6"
+const response = await axios.post(
+  FASTAPI_USER_DASHBOARD,
+  null,   // body must be null
+  {
+    params: queryParams,   // ✅ correct place
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }
+);   "string"  "string"
+console.log("time_filter",req.params)"3fa85f64-5717-4562-b3fc-2c963f66afa6","3fa85f64-5717-4562-b3fc-2c963f66afa6"
+*/
 /*
     "time_filter":"today",
   "start_date":  "2025-01-13T01:00:52.920Z",
@@ -312,36 +315,30 @@ const response = await axios.post(
     }
   }
 );
-
-
-
    
-  // } catch (error) {
-  //   console.error(error.message);
-  // }
-
-
-
-
-//     const response = await axios.get(FASTAPI_USER_DASHBOARD, {
-//       headers: { Authorization: `Bearer ${token}` },
-//       params:(queryParams),
-//       paramsSerializer: (params) => {
-//   return Object.entries(params)
-//     .map(([key, value]) => {
-//       if (Array.isArray(value)) {
-//         return value
-//           .map(
-//             (v) => `${encodeURIComponent(key)}=${encodeURIComponent(v)}`
-//           )
-//           .join("&");
-//       }
-//       return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
-//     })
-//     .join("&");
-// },
-//     });
-//     console.log("Calls fetched:", response.data);
+ /* } catch (error) {
+    console.error(error.message);
+  }
+    const response = await axios.get(FASTAPI_USER_DASHBOARD, {
+      headers: { Authorization: `Bearer ${token}` },
+      params:(queryParams),
+      paramsSerializer: (params) => {
+  return Object.entries(params)
+    .map(([key, value]) => {
+      if (Array.isArray(value)) {
+        return value
+          .map(
+            (v) => `${encodeURIComponent(key)}=${encodeURIComponent(v)}`
+          )
+          .join("&");
+      }
+      return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+    })
+    .join("&");
+},
+    });
+    console.log("Calls fetched:", response.data);
+    */
     res.json(response.data);
   } catch (err) {
     console.error("Error fetching calls:", err.response?.data || err.message);
@@ -359,7 +356,7 @@ router.get("/Get_Recording_URL/:id", async (req, res) => {
     // const token = req.headers.authorization?.replace("Bearer ", "");
     // const token = await getToken();
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjE1NjM3MS1jODFlLTRlNWQtOTA1ZC04YjcxZjY3OTA0MDkiLCJwaG9uZV9udW1iZXIiOiI5NDk2MTI3NjI5IiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTc2ODgxMzg5OSwiaWF0IjoxNzY4MjA5MDk5LCJ0eXBlIjoiYWNjZXNzIn0.X3hALGUc91Dk6kQDVDuILAxKYnL31VLV8vNPUbt1W4s";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZDQ3NWU4OC02ZDdlLTRmMmUtYWUxNy00ZjM5MDZiZTIyMzciLCJwaG9uZV9udW1iZXIiOiI5NTY3MzE2OTQwIiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTgwMTU2MDU3OSwiaWF0IjoxNzcwMDI0NTc5LCJ0eXBlIjoiYWNjZXNzIn0.Xp_f3E7fOwQpG9wItw8sUd8grwVa4mRCJ2H5pg4fDWE";
 
     if (!token) {
       return res.status(401).json({ error: "Missing access token" });
@@ -397,9 +394,9 @@ const loginPayload = {
       client_key: "your_console_key_here", // 🔑 replace with real key
       device_id: "1234",       // could come from frontend
       device_rom: "unknown",
-      phone_number: "9496127629",
+      phone_number: "9567316940",
       otp_jwt: "",                         // empty or actual OTP JWT
-      password: "Lalitha@42"
+      password: "changethis"
     };
 
   const response = await axios.post(

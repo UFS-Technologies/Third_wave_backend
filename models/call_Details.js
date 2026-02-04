@@ -3,7 +3,7 @@ const fs = require('fs');
 const storedProcedure=require('../helpers/stored-procedure');
 const axios = require("axios");
 // Base URL for FastAPI
-const FASTAPI_BASE_URL = "https://fastapiserver-0owu.onrender.com/api/v1";
+const FASTAPI_BASE_URL = "http://15.207.163.233:8000/api/v1";
 
 // Endpoints
 const FASTAPI_LOGIN_URL = `${FASTAPI_BASE_URL}/auth/login`;
@@ -23,7 +23,7 @@ const CallDetails = {
 
   try {
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNjE1NjM3MS1jODFlLTRlNWQtOTA1ZC04YjcxZjY3OTA0MDkiLCJwaG9uZV9udW1iZXIiOiI5NDk2MTI3NjI5IiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTc2ODgxMzg5OSwiaWF0IjoxNzY4MjA5MDk5LCJ0eXBlIjoiYWNjZXNzIn0.X3hALGUc91Dk6kQDVDuILAxKYnL31VLV8vNPUbt1W4s";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZDQ3NWU4OC02ZDdlLTRmMmUtYWUxNy00ZjM5MDZiZTIyMzciLCJwaG9uZV9udW1iZXIiOiI5NTY3MzE2OTQwIiwiY2xpZW50X3R5cGUiOiJjb25zb2xlIiwiZGV2aWNlX2lkIjoiMTIzNCIsImRldmljZV9yb20iOiJ1bmtub3duIiwic2NvcGVzIjpbImNvbnNvbGU6YWxsIl0sImV4cCI6MTgwMTU2MDU3OSwiaWF0IjoxNzcwMDI0NTc5LCJ0eXBlIjoiYWNjZXNzIn0.Xp_f3E7fOwQpG9wItw8sUd8grwVa4mRCJ2H5pg4fDWE";
   
     if (!token) {
         const response = await performLogin();
