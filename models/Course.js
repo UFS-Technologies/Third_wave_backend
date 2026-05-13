@@ -7,7 +7,7 @@ const { Console } = require("console");
 var Course = {
   
   Save_Course: function (Course_, callback) {
-            console.log('Course_.English_Test_Data: ', Course_.English_Test_Data);
+            // console.log('Course_.English_Test_Data: ', Course_.English_Test_Data);
     return db.query(
       "CALL Save_Course(" +
         "@Course_Id_ :=?," +
@@ -44,7 +44,9 @@ var Course = {
          "@English_Test_Data_ :=?," + 
         "@Gold_ :=?," +
         "@Silver_ :=?," +
-        "@Platinum_ :=?" +
+        "@Platinum_ :=?," +
+        "@Application_Deadline_ :=?," +
+        "@Special_Requirements_ :=?" +
         ")",
       [
         Course_.Course_Id,
@@ -83,6 +85,9 @@ var Course = {
         Course_.Gold,
         Course_.Silver,
         Course_.Platinum,
+        Course_.Application_Deadline,
+        Course_.Special_Requirements
+
       ],
       callback
     );
@@ -259,8 +264,8 @@ Search_All_Application_Statuses: async (Course_Id, Student_Id) => {
     console.log("Course_Details",Course_Details);
     
     return db.query(
-      "CALL Save_Course_Import(" + "@Course_Details :=?," + "@Process_Id :=?" + ")",
-      [JSON.stringify(Course_Details.Course_Import_Details),Course_Details.Process_Id],
+      "CALL Save_Course_Import(" + "@Course_Details :=?," + "@University_Id :=?" + ")",
+      [JSON.stringify(Course_Details.Course_Import_Details),Course_Details.University_Id],
       callback
     );
   },
