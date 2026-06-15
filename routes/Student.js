@@ -3949,6 +3949,7 @@ router.get(
 	}
 );
 router.post("/Save_Student_Import/", function (req, res) {
+	console.log('req.body: ', req.body);
 	try {
 		Student.Save_Student_Import(req.body, function (err, rows) {
 			if (err) {
@@ -5732,11 +5733,12 @@ router.get("/Search_Faculty_Typeahead/", function (req, res, next) {
 	}
 });
 router.get(
-	"/Search_Student_Report/:Fromdate_?/:Todate_?/:Search_By_?/:SearchbyName_?/:Department_?/:Enquiry_Source_?/:Branch_?/:By_User_?/:Is_Date_Check_?/:Is_Old_Datas_?/:Page_Index1_?/:Page_Index2_?/:Login_User_Id_?/:RowCount?/:RowCount2?/:remarks_?/:To_User_?/:Status_Id_?/:Register_Value_?/:UserType_Value_?",
+	"/Search_Student_Report/:Fromdate_?/:Todate_?/:Search_By_?/:SearchbyName_?/:Department_?/:Enquiry_Source_?/:Branch_?/:By_User_?/:Is_Date_Check_?/:Is_Old_Datas_?/:Page_Index1_?/:Page_Index2_?/:Login_User_Id_?/:RowCount?/:RowCount2?/:remarks_?/:To_User_?/:Status_Id_?/:Register_Value_?/:UserType_Value_?/:Date_value?",
 	async function (req, res, next) {
+		console.log('req.params: ', req.params);4
 		var result = "";
 		try {
-			console.log('req.params.UserType_Value: ', req.params.UserType_Value_);
+			console.log('req.params: ', req.params);
 			result = await Student.Search_Student_Report(
 				req.params.Fromdate_,
 				req.params.Todate_,
@@ -5756,7 +5758,9 @@ router.get(
 				req.params.remarks_,
 				req.params.To_User_,
 				req.params.Status_Id_,
-				req.params.Register_Value_, req.params.UserType_Value_,
+				req.params.Register_Value_, 
+				req.params.UserType_Value_,
+				req.params.Date_value
 
 			);
 
