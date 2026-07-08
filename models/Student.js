@@ -424,7 +424,15 @@ var Student = {
 			"@Total_Budget_ :=?," +
 			"@Gaps_ :=?," +
 			"@Reminder_Enabled_ :=?," +
-			"@Reminder_Time_ :=?" +
+			"@Reminder_Time_ :=?," +
+			"@preferred_degree_ :=?," +
+			"@Contact_Time_ :=?," +
+			"@Contact_Method_ :=?," +
+			"@Is_Spouse_Vise_ :=?," +
+			"@Spouse_country_ :=?," +
+			"@Spouse_country_Id_ :=?," +
+			"@Yearly_Budget_ :=?" +
+
 			")"
 			, [Profile_.Student_Id, Profile_.Enquiry_Source_Id, Profile_.Enquiry_Source_Name, Profile_.Enquiryfor_Id,Profile_.Enquirfor_Name,
 			Profile_.Shore_Id, Profile_.Shore_Name, Profile_.Enquiry_Mode_Id, Profile_.Enquiry_Mode_Name, Profile_.Program_Course_Id,
@@ -451,7 +459,14 @@ var Student = {
 			Profile_.Total_Budget,
 			Profile_.Gaps,
 			FollowUp_.Reminder_Enabled,   // NEW
-			FollowUp_.Reminder_Time       // NEW (should be 'HH:mm' from Angular)
+			FollowUp_.Reminder_Time,
+			Profile_.preferred_degree,
+			Profile_.Contact_Time,
+			Profile_.Contact_Method,
+			Profile_.Is_Spouse_Vise,
+			Profile_.Spouse_country,
+			Profile_.Spouse_country_Id,
+			Profile_.Yearly_Budget       // NEW (should be 'HH:mm' from Angular)
 			], callback);
 	},
 	Get_Todays_Notifications: function (User_Id, callback) {
