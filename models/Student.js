@@ -12955,7 +12955,17 @@ var Student = {
       throw error;
     }
   }
-
+,
+Global_Search_Student: function (Student_, callback) {
+    return db.query(
+        "CALL Global_Search_Student(?, ?)",
+        [
+            Student_.Search_Name,
+            Student_.To_Staff_Id
+        ],
+        callback
+    );
+},
 
 
 };

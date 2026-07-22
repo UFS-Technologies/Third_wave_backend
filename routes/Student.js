@@ -7635,7 +7635,21 @@ router.get(
 );
 
 
-
+router.get("/Global_Search_Student/", function (req, res) {
+    try {
+        Student.Global_Search_Student(req.query, function (err, rows) {
+            if (err) {
+                console.log(err);
+                res.json(err);
+            } else {
+                res.json(rows);
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    } finally {
+    }
+});
 
 
 
