@@ -4122,20 +4122,34 @@ var Student = {
 					User_Id_,]
 			).result();
 
+			enquiry_source_count_data = await new storedProcedure(
+			"Get_Dashboard_Count_Enquiry_Source",
+			[
+				UserRoleString,
+				Department_String,
+				Login_User_Id_,
+				FromDate_,
+				ToDate_,
+				Date_Value_,
+				User_Id_
+			]
+		).result();
+
 		} catch (e) {
 			console.log(e);
 		}
-		console.log(Leads);
-		console.log(Enquiry_Source_data);
-		console.log(Status_count_data);
-		console.log(user_count_data);
+		// console.log(Leads);
+		// console.log(Enquiry_Source_data);
+		// console.log(Status_count_data);
+		// console.log(user_count_data);
 
 		return {
 			returnvalue: {
 				Leads,
 				Enquiry_Source_data,
 				Status_count_data,
-				user_count_data
+				user_count_data,
+				enquiry_source_count_data
 			},
 		};
 	},
