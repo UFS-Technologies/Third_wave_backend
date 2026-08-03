@@ -10356,7 +10356,7 @@ var Student = {
 		remarks_,
 		To_User_,
 		Status_Id_,
-		Register_Value_, UserType_Value_,Date_value,Country_Id
+		Register_Value_, UserType_Value_,Date_value,Country_Id, Is_Touched
 	) {
 		console.log('UserType_Value: ', UserType_Value_);
 		var Leads = [];
@@ -10382,7 +10382,8 @@ var Student = {
 				Status_Id_,
 				Register_Value_, UserType_Value_,
 				Date_value,
-				Country_Id
+				Country_Id,
+				Is_Touched
 
 			]).result();
 		} catch (e) {

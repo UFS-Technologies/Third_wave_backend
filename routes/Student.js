@@ -5733,7 +5733,7 @@ router.get("/Search_Faculty_Typeahead/", function (req, res, next) {
 	}
 });
 router.get(
-	"/Search_Student_Report/:Fromdate_?/:Todate_?/:Search_By_?/:SearchbyName_?/:Department_?/:Enquiry_Source_?/:Branch_?/:By_User_?/:Is_Date_Check_?/:Is_Old_Datas_?/:Page_Index1_?/:Page_Index2_?/:Login_User_Id_?/:RowCount?/:RowCount2?/:remarks_?/:To_User_?/:Status_Id_?/:Register_Value_?/:UserType_Value_?/:Date_value?/:Country_Id?",
+	"/Search_Student_Report/:Fromdate_?/:Todate_?/:Search_By_?/:SearchbyName_?/:Department_?/:Enquiry_Source_?/:Branch_?/:By_User_?/:Is_Date_Check_?/:Is_Old_Datas_?/:Page_Index1_?/:Page_Index2_?/:Login_User_Id_?/:RowCount?/:RowCount2?/:remarks_?/:To_User_?/:Status_Id_?/:Register_Value_?/:UserType_Value_?/:Date_value?/:Country_Id?/:Is_Touched?",
 	async function (req, res, next) {
 		console.log('req.params: ', req.params);4
 		var result = "";
@@ -5761,7 +5761,8 @@ router.get(
 				req.params.Register_Value_, 
 				req.params.UserType_Value_,
 				req.params.Date_value,
-				req.params.Country_Id
+				req.params.Country_Id,
+				req.params.Is_Touched
 
 			);
 
