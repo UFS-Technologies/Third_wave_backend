@@ -7653,6 +7653,32 @@ router.get("/Global_Search_Student/", function (req, res) {
     }
 });
 
+router.get('/Search_Weekly_Student_Report', function (req, res) {
 
+    var From_Date = req.query.From_Date;
+    var To_Date = req.query.To_Date;
+    var To_User_Id = req.query.To_User_Id || 0;
+    var Status_Id = req.query.Status_Id || 0;
+	var loginUserId = req.query.loginUserId; // from token middleware
+
+    Student.Search_Weekly_Student_Report(
+        From_Date,
+        To_Date,
+        To_User_Id,
+        Status_Id,
+		loginUserId,
+        function (err, result) {
+
+            if (err) {
+                res.status(500).send(err);
+            }
+            else {
+                res.send(result);
+            }
+
+        }
+    );
+
+});
 
 module.exports = router;

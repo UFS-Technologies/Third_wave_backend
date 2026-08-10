@@ -1030,7 +1030,7 @@ var Student = {
 				Enquiry_Source_Search_,
 				Country_Search_
 			]).result();
-			console.log('Leads: ', Leads);
+			
 		} catch (e) {
 			console.log('e: ', e);
 
@@ -12982,7 +12982,27 @@ Global_Search_Student: function (Student_, callback) {
         callback
     );
 },
+  Search_Weekly_Student_Report: function (
+    From_Date,
+    To_Date,
+    To_User_Id,
+    Status_Id,
+	login_User_Id,
+    callback
+) {
 
+    return db.query(
+        "CALL Search_Weekly_Student_Report(?,?,?,?,?)",
+        [
+            From_Date,
+            To_Date,
+            To_User_Id,
+            Status_Id,
+			login_User_Id,
+        ],
+        callback
+    );
+}
 
 };
 
