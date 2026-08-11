@@ -13002,7 +13002,29 @@ Global_Search_Student: function (Student_, callback) {
         ],
         callback
     );
-}
+},
+Search_Todays_Report: function (
+    From_Date_,
+    To_Date_,
+    From_Time_,
+    To_Time_,
+    To_Staff_Id_,
+    Login_User_Id_,
+    callback
+) {
+	    return db.query(
+        "CALL Search_Todays_Report(?,?,?,?,?,?)",
+        [
+            From_Date_,
+            To_Date_,
+            From_Time_,
+            To_Time_,
+            To_Staff_Id_,
+            Login_User_Id_
+        ],
+        callback
+    );
+},
 
 };
 

@@ -7681,4 +7681,59 @@ router.get('/Search_Weekly_Student_Report', function (req, res) {
 
 });
 
+router.get('/Search_Todays_Report', function (req, res, next) {
+
+    try {
+
+        let From_Date_ = req.query.From_Date;
+        let To_Date_ = req.query.To_Date;
+        let From_Time_ = req.query.From_Time;
+        let To_Time_ = req.query.To_Time;
+        let To_Staff_Id_ = req.query.To_Staff_Id;
+        let Login_User_Id_ = req.query.Login_User_Id;
+
+
+        Student.Search_Todays_Report(
+            From_Date_,
+            To_Date_,
+            From_Time_,
+            To_Time_,
+            To_Staff_Id_,
+            Login_User_Id_,
+            function (err, result) {
+
+                if (err) {
+
+                    console.log(err);
+
+                    return res.status(500).send({
+                        Success: false,
+                        Message: "Error while getting today's report",
+                        Error: err
+                    });
+                }
+
+                return res.status(200).send({
+                    Success: true,
+                    Data: result[0]
+                });
+
+            }
+        );
+
+    }
+    catch (e) {
+
+        console.log(e);
+
+        return res.status(500).send({
+            Success: false,
+            Message: "Something went wrong",
+            Error: e
+        });
+
+    }
+
+});
+
 module.exports = router;
